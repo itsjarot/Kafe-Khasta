@@ -1,0 +1,154 @@
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Poppins', sans-serif;
+    }
+
+    body{
+      background:#ffffff;
+    }
+
+  
+    /* ================= CONTAINER ================= */
+
+    .container{
+      width:100%;
+      display:flex;
+      margin-top:85px;
+    }
+
+    /* ================= SIDEBAR ================= */
+
+    .sidebar{
+      width:280px;
+      min-height:150vh;
+      background:rgb(255, 255, 255);
+      border-right:1px solid #ddd;
+      padding:40px 30px;
+      position:fixed;
+      left:0;
+      top:85px;
+    }
+
+    .sidebar h2{
+      margin-bottom:25px;
+      color:#1e3932;
+      font-size:28px;
+    }
+
+    .menu-list{
+      list-style:none;
+    }
+
+    .menu-list li{
+      margin-bottom:18px;
+      color:#555;
+      cursor:pointer;
+      font-size:17px;
+      transition:0.3s;
+      padding:10px 15px;
+      border-radius:10px;
+    }
+
+    .menu-list li:hover{
+      background: #744d48;
+      color: #fffbfb;
+    }
+
+    .menu-list li.active{
+      background: #2b1b19;
+      color:white;
+    }
+
+    /* ================= CONTENT ================= */
+
+    .content{
+      margin-left:280px;
+      width:100%;
+      padding:50px;
+    }
+
+    .content-title{
+      margin-bottom:40px;
+    }
+
+    .content-title h1{
+      font-size:45px;
+      color: #744d48;
+    }
+
+    .content-title p{
+      color:#666;
+      margin-top:10px;
+    }
+
+    /* ================= PRODUCT GRID ================= */
+
+    .product-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+      gap:35px;
+    }
+
+    .menu{
+      overflow:hidden;
+      box-shadow:0 10px 25px rgba(0,0,0,0.08);
+      transition:0.4s;
+    }
+
+    
+    .menu-item{
+        display: flex;
+      padding:25px;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(0,0,0,0.1);
+    }
+
+
+    .menu-info p{
+      font-size: 20px;
+      font-weight:700;
+      color:#000000;
+    }
+
+    .menu-item button{
+        width: 120px;
+        height: 40px;
+        padding: 3px;
+        border: none;
+        background-color: #d4a373;
+        border-radius: 10px;
+    }
+    .menu-item button:hover {
+        background:#d4a373;
+        transform:translateY(-3px);
+    }
+
+
+    /* ================= RESPONSIVE ================= */
+
+    @media(max-width:1000px){
+
+      .sidebar{
+        width:100%;
+        height:auto;
+        position:relative;
+        top:0;
+      }
+
+      .container{
+        flex-direction:column;
+      }
+
+      .content{
+        margin-left:0;
+      }
+
+
+      .nav-menu{
+        display:none;
+      }
+
+    }
