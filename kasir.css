@@ -1,0 +1,92 @@
+* {
+  box-sizing: border-box;
+  font-family: 'Poppins', Arial, sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 20px;
+  background-color: #f4f1ee;
+}
+
+h1 {
+  text-align: center;
+  color: #5b3a29;
+}
+
+.board {
+  display: flex;
+  gap: 15px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.column {
+  flex: 1;
+  min-width: 280px;
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.column h2 {
+  margin-top: 0;
+  text-align: center;
+  font-size: 18px;
+  color: #5b3a29;
+  border-bottom: 2px solid #5b3a29;
+  padding-bottom: 8px;
+}
+
+.card {
+  background-color: #f9f5f2;
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 12px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+}
+
+.card h3 {
+  margin: 0 0 8px;
+  font-size: 16px;
+}
+
+.card ul {
+  margin: 0 0 8px;
+  padding-left: 18px;
+  font-size: 14px;
+}
+
+.card .total {
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.card .waktu {
+  font-size: 12px;
+  color: #888;
+  margin-bottom: 8px;
+}
+
+.card button {
+  width: 100%;
+  padding: 8px;
+  background-color: #5b3a29;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.card button:hover {
+  background-color: #43291c;
+}
+
+.empty {
+  text-align: center;
+  color: #aaa;
+  font-size: 14px;
+  padding: 10px 0;
+}

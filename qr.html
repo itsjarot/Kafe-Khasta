@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QR Code Meja - Khasta</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Poppins', Arial, sans-serif;
+    }
+    body {
+      margin: 0;
+      padding: 30px;
+      background-color: #f4f1ee;
+      text-align: center;
+    }
+    h1 {
+      color: #5b3a29;
+    }
+    .meja-list {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+      margin-top: 30px;
+    }
+    .meja-card {
+      background: white;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .meja-card h2 {
+      margin-top: 0;
+      color: #5b3a29;
+    }
+    .meja-card p {
+      font-size: 12px;
+      color: #888;
+      word-break: break-all;
+      max-width: 200px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>QR Code per Meja - Khasta</h1>
+
+  <div class="meja-list" id="meja-list"></div>
+
+  <script>
+    // Ganti BASE_URL sesuai alamat tempat order.html dibuka (live server)
+    const BASE_URL = 'https://oversight-impending-congrats.ngrok-free.dev';
+    const jumlahMeja = 3;
+
+    const mejaList = document.getElementById('meja-list');
+
+    for (let i = 1; i <= jumlahMeja; i++) {
+      const url = `${BASE_URL}/order.html?meja=${i}`;
+
+      const card = document.createElement('div');
+      card.classList.add('meja-card');
+      card.innerHTML = `
+        <h2>Meja ${i}</h2>
+        <div id="qr-${i}"></div>
+        <p>${url}</p>
+      `;
+      mejaList.appendChild(card);
+
+      new QRCode(document.getElementById(`qr-${i}`), {
+        text: url,
+        width: 150,
+        height: 150
+      });
+    }
+  </script>
+
+</body>
+</html>
