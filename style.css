@@ -39,25 +39,19 @@ body{
 }
 
 .content h1{
-  font-size:90px;
-  color:#c28b4e;
-  line-height:1;
-  font-size: 65PX;
-  font-weight:300PX;
-
-  letter-spacing:4px;
+ font-size: 65px;
+  color: #c28b4e;
+  line-height: 1;
+  font-weight: 500;
+  letter-spacing: 2px;
 }
 
 .content h2{
-  font-family:'Great Vibes', cursive;
-  
-  font-size:85px;
-
-  color:#c28b4e;
-
-  margin-top:-15px;
-
-  font-weight:400;
+ font-size: 65px;
+ color: #c28b4e;
+ font-weight: 500;
+ letter-spacing: 2px;
+ margin-top: 10px;
 }
 
 .content p{
