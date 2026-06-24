@@ -24,7 +24,7 @@ Proyek tugas kuliah **Rekayasa Perangkat Lunak** — sistem pemesanan kafe berba
 
 ```
                         ┌──────────────┐
-  Pelanggan scan QR ──▶ │ order.html   │ ──▶ pilih menu ──▶ pilih metode bayar
+  Pelanggan scan QR ──▶ │ order.html   | ──▶ pilih menu ──▶ pilih metode bayar
                         │ ?meja=N      │     (Tunai/QRIS/Kartu)
                         └──────┬───────┘
                                │ klik "Konfirmasi Pesanan"
@@ -36,12 +36,12 @@ Proyek tugas kuliah **Rekayasa Perangkat Lunak** — sistem pemesanan kafe berba
                     ┌──────────┴──────────┐
                     ▼                     ▼
             ┌──────────────┐    ┌──────────────────┐
-            │  kasir.html  │   │  dashboard.html  │
-            │  (Kanban)    │   │  (halaman depan) │
-            │              │   │                  │
-            │  Baru        │   │  Tombol:         │
-            │  Diproses    │   │  ├ LIHAT PESANAN │
-            │  Selesai     │   │  ├ QR CODE       │
+            │  kasir.html  │    │  dashboard.html  │
+            │  (Kanban)    │    │  (halaman depan) │
+            │              │    │                  │
+            │  Baru        │    │  Tombol:         │
+            │  Diproses    │    │  ├ LIHAT PESANAN │
+            │  Selesai     │    │  ├ QR CODE       │
             └──────────────┘    └──────────────────┘
 ```
 
