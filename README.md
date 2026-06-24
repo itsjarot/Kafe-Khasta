@@ -30,26 +30,26 @@ Proyek tugas kuliah **Rekayasa Perangkat Lunak** — sistem pemesanan kafe berba
                                │ klik "Konfirmasi Pesanan"
                                ▼
                         ┌──────────────┐
-                        │  Backend API  │ ──▶ Tersimpan di database.db
+                        │  Backend API │ ──▶ Tersimpan di database.db
                         └──────┬───────┘
                                │
                     ┌──────────┴──────────┐
                     ▼                     ▼
             ┌──────────────┐    ┌──────────────────┐
-            │  kasir.html   │    │   dashboard.html  │
-            │  (Kanban)     │    │   (halaman depan) │
-            │               │    │                    │
-            │  Baru         │    │  Tombol:           │
-            │  Diproses     │    │  ├ LIHAT PESANAN   │
-            │  Selesai      │    │  ├ QR CODE         │
+            │  kasir.html  │   │  dashboard.html  │
+            │  (Kanban)    │   │  (halaman depan) │
+            │              │   │                  │
+            │  Baru        │   │  Tombol:         │
+            │  Diproses    │   │  ├ LIHAT PESANAN │
+            │  Selesai     │   │  ├ QR CODE       │
             └──────────────┘    └──────────────────┘
 ```
 
 ### Alur dari sisi pelanggan:
-1. Scan QR code di meja → buka `order.html?meja=1`
+1. Scan QR code di meja → buka `order.html?meja=N`
 2. Pilih menu dari sidebar (Coffee, Non Coffee, Tea, Makanan, Dessert)
 3. Klik **Pesan** tiap item → masuk keranjang
-4. Pilih **metode bayar** (Tunai / QRIS / Kartu)
+4. Pilih **metode bayar** (Tunai / QRIS / Kartu debit)
 5. Klik **Konfirmasi Pesanan** → otomatis masuk ke dashboard kasir
 
 ### Alur dari sisi kasir:
