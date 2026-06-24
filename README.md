@@ -24,7 +24,7 @@ Proyek tugas kuliah **Rekayasa Perangkat Lunak** — sistem pemesanan kafe berba
 
 ```
                         ┌──────────────┐
-  Pelanggan scan QR ──▶ │ order.html   | ──▶ pilih menu ──▶ pilih metode bayar
+  Pelanggan scan QR ──▶ │ order.html   │ ──▶ pilih menu ──▶ pilih metode bayar
                         │ ?meja=N      │     (Tunai/QRIS/Kartu)
                         └──────┬───────┘
                                │ klik "Konfirmasi Pesanan"
@@ -36,12 +36,12 @@ Proyek tugas kuliah **Rekayasa Perangkat Lunak** — sistem pemesanan kafe berba
                     ┌──────────┴──────────┐
                     ▼                     ▼
             ┌──────────────┐    ┌──────────────────┐
-            │  kasir.html  │    │  dashboard.html  │
-            │  (Kanban)    │    │  (halaman depan) │
-            │              │    │                  │
-            │  Baru        │    │  Tombol:         │
-            │  Diproses    │    │  ├ LIHAT PESANAN │
-            │  Selesai     │    │  ├ QR CODE       │
+            │  kasir.html  │   │  dashboard.html  │
+            │  (Kanban)    │   │  (halaman depan) │
+            │              │   │                  │
+            │  Baru        │   │  Tombol:         │
+            │  Diproses    │   │  ├ LIHAT PESANAN │
+            │  Selesai     │   │  ├ QR CODE       │
             └──────────────┘    └──────────────────┘
 ```
 
@@ -50,7 +50,9 @@ Proyek tugas kuliah **Rekayasa Perangkat Lunak** — sistem pemesanan kafe berba
 2. Pilih menu dari sidebar (Coffee, Non Coffee, Tea, Makanan, Dessert)
 3. Klik **Pesan** tiap item → masuk keranjang
 4. Pilih **metode bayar** (Tunai / QRIS / Kartu debit)
-5. Klik **Konfirmasi Pesanan** → otomatis masuk ke dashboard kasir
+5. Klik **Konfirmasi Pesanan** → **review modal** muncul (lihat semua item, total, metode bayar)
+6. Klik **Pesan Sekarang** → **success screen** dengan centang hijau
+7. Klik **Pesan Lagi** kalau mau order tambahan
 
 ### Alur dari sisi kasir:
 1. Buka `index.html` → login (`kasir1` / `khasta123`)
@@ -59,6 +61,7 @@ Proyek tugas kuliah **Rekayasa Perangkat Lunak** — sistem pemesanan kafe berba
 4. Klik **Proses Pesanan** → pindah ke kolom **Diproses**
 5. Klik **Tandai Selesai** → pindah ke kolom **Selesai**
 6. Klik **Export & Reset** untuk download laporan penjualan (CSV) & kosongkan database
+7. Tombol **← Kembali** di pojok kiri untuk kembali ke dashboard utama
 
 ---
 
@@ -83,7 +86,7 @@ Kafe-Khasta/
 ├── dashboard.html      Halaman utama setelah login (tombol: Lihat Pesanan, QR)
 ├── order.html          Halaman order pelanggan (sidebar menu + keranjang)
 ├── kasir.html          Dashboard kasir (kanban: Baru/Diproses/Selesai)
-├── qr.html             Generate QR code per meja (1-3)
+├── qr.html             Generate QR code per meja (1-20, bisa diatur)
 ├── navbar.html         Komponen navbar yang di-load ke halaman lain
 │
 ├── style.css           Style untuk dashboard.html
@@ -227,6 +230,16 @@ pesanan_item
 - Floating keranjang dengan badge jumlah item
 - Bisa tambah/kurang jumlah item
 
+### Review & Konfirmasi Pesanan
+- Setelah klik **Konfirmasi Pesanan**, muncul modal ringkasan
+- Tampil daftar item, jumlah, subtotal, total, dan metode bayar
+- Tombol **Kembali** untuk edit, **Pesan Sekarang** untuk kirim
+
+### Tampilan Sukses (Bukan Alert)
+- Setelah pesanan berhasil, muncul layar penuh dengan animasi centang
+- Informasi: "Pesanan Berhasil! Silakan tunggu di meja"
+- Tombol **Pesan Lagi** untuk order tambahan tanpa reload
+
 ### Metode Pembayaran
 - Tersedia 3 pilihan: **Tunai**, **QRIS**, **Kartu Debit/Kredit**
 - Dipilih pelanggan sebelum konfirmasi pesanan
@@ -246,9 +259,9 @@ pesanan_item
 - Setelah download, database otomatis dikosongkan
 
 ### QR Code Generator
-- Generate QR untuk meja 1-3
-- Bisa dicetak & ditempel di meja
-- URL bisa disesuaikan (ganti `BASE_URL` di `qr.html`)
+- Input jumlah meja (1-20) — tinggal ganti angka, klik Generate
+- QR otomatis pakai URL tempat `qr.html` dibuka (`window.location.origin`)
+- Ukuran QR 250×250 px — ideal untuk dicetak & ditempel di meja
 
 ---
 
