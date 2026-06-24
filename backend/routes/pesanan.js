@@ -4,7 +4,8 @@ const db = require('../database');
 
 // POST /api/pesanan -> buat pesanan baru
 router.post('/', (req, res) => {
-  const { nomor_meja, items } = req.body;
+  const { nomor_meja, items, metode_pembayaran } = req.body;
+  const bayar = metode_pembayaran || 'Tunai';
 
   // Validasi input dasar
   if (!nomor_meja || !Array.isArray(items) || items.length === 0) {
@@ -13,8 +14,8 @@ router.post('/', (req, res) => {
 
   // 1. Insert ke tabel pesanan
   db.run(
-    'INSERT INTO pesanan (nomor_meja, status) VALUES (?, ?)',
-    [nomor_meja, 'baru'],
+    'INSERT INTO pesanan (nomor_meja, status, metode_pembayaran) VALUES (?, ?, ?)',
+    [nomor_meja, 'baru', bayar],
     function (err) {
       if (err) {
         return res.status(500).json({ error: err.message });
@@ -87,6 +88,20 @@ router.patch('/:id', (req, res) => {
       return res.status(404).json({ error: 'Pesanan tidak ditemukan' });
     }
     res.json({ message: 'Status berhasil diperbarui' });
+  });
+});
+
+// DELETE /api/pesanan -> hapus semua pesanan (export & reset)
+router.delete('/', (req, res) => {
+  db.serialize(() => {
+    db.run('DELETE FROM pesanan_item', (err) => {
+      if (err) return res.status(500).json({ error: err.message });
+
+      db.run('DELETE FROM pesanan', (err) => {
+        if (err) return res.status(500).json({ error: err.message });
+        res.json({ message: 'Semua pesanan berhasil dihapus' });
+      });
+    });
   });
 });
 
