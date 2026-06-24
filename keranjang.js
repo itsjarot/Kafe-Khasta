@@ -5,6 +5,7 @@ const nomorMeja = params.get('meja') || 1;
 const API_URL = '/api';
 
 let keranjang = []; // { nama, harga, jumlah }
+let metodePembayaran = 'Tunai';
 
 
 // ===== BUAT UI KERANJANG =====
@@ -23,6 +24,14 @@ function buatUIKeranjang() {
     <h3>Keranjang - Meja ${nomorMeja}</h3>
     <div id="cart-items"></div>
     <div id="cart-total"></div>
+    <div id="cart-payment">
+      <label>Metode Bayar</label>
+      <select id="payment-select">
+        <option value="Tunai">Tunai</option>
+        <option value="QRIS">QRIS</option>
+        <option value="Kartu">Kartu Debit/Kredit</option>
+      </select>
+    </div>
     <button id="cart-confirm">Konfirmasi Pesanan</button>
   `;
   document.body.appendChild(panel);
@@ -34,6 +43,11 @@ function buatUIKeranjang() {
 
   // Klik tombol konfirmasi
   document.getElementById('cart-confirm').addEventListener('click', kirimPesanan);
+
+  // Simpan pilihan metode bayar
+  document.getElementById('payment-select').addEventListener('change', (e) => {
+    metodePembayaran = e.target.value;
+  });
 }
 
 buatUIKeranjang();
@@ -118,7 +132,8 @@ async function kirimPesanan() {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         nomor_meja: nomorMeja,
-        items: keranjang
+        items: keranjang,
+        metode_pembayaran: metodePembayaran
       })
     });
 

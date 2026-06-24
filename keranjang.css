@@ -80,6 +80,27 @@
   text-align: right;
 }
 
+#cart-payment {
+  margin: 10px 0;
+}
+#cart-payment label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: #5b3a29;
+  margin-bottom: 4px;
+}
+#cart-payment select {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  background: white;
+  color: #333;
+  cursor: pointer;
+}
+
 #cart-confirm {
   width: 100%;
   padding: 10px;
