@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Coffee Shop</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css">
+  <!--CSS navbar-->
+  <link rel="stylesheet" href="navbar.css">
+
+  <!-- Font Awesome dan icon media sosial -->
+  <link rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+  
+  <!-- Google Font -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+</head>
+
+
+
+<body>
+  <!-- Navbar -->
+  <div id="navbar"></div>
+
+
+  <!-- HERO SECTION -->
+  <section class="hero">
+
+    <!-- CONTENT -->
+    <div class="content">
+
+      <h1>
+        SELAMAT DATANG
+      </h1>
+
+      <p>
+       Menyajikan kopi dengan racikan khas yang mendalam, menghadirkan kenyamanan di setiap tegukan. 
+       Temukan harmoni rasa kopi pilihan dan suasana santai hanya di Kafe Khasta.
+      </p>
+
+      <!-- BUTTON -->
+      <div class="start-order">
+        <button class="btn order-btn" onclick="window.location.href='kasir.html'">LIHAT PESANAN</button>
+        
+      </div>
+        
+
+    </div>
+       <!-- gambar logo khasta -->
+    <div class="coffee-image">
+        <img src="gambar/logo_cafe_khasta-removebg.png" alt="Coffee">
+    </div>
+
+  </section>
+
+
+
+  
+  <!-- JAVASCRIPT -->
+  
+ <!-- script untuk navbar.js -->
+ <script src="navbar.js"></script>
+ <!-- script untuk navbar.js -->
+
+
+  <script>
+    //responsive icon menu
+    function toggleMenu(){
+
+      let nav = document.getElementById("navright");
+
+      nav.classList.toggle("active");
+
+    }
+
+
+    //tombol untuk pindah halaman ke:
+    function mulaiOrder(){
+      alert("Masuk ke halaman menu order");
+    }
+
+    
+
+  </script>
+
+  
+</html>
