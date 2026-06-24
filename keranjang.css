@@ -1,50 +1,69 @@
-/* ===== FLOATING BUTTON KERANJANG ===== */
+/* ========================================
+   Kafe Khasta — Floating Cart
+   ======================================== */
+
+@import url('tokens.css');
+
+/* ===== Floating Button ===== */
 #cart-fab {
   position: fixed;
-  bottom: 20px;
-  right: 20px;
-  width: 60px;
-  height: 60px;
-  background-color: #5b3a29;
-  color: white;
-  border-radius: 50%;
+  bottom: 24px;
+  right: 24px;
+  width: 56px;
+  height: 56px;
+  background: var(--clr-surface-dark);
+  color: var(--clr-text-on-dark);
+  border-radius: var(--radius-full);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 24px;
+  font-size: 1.3rem;
   cursor: pointer;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-  z-index: 1000;
+  box-shadow: var(--shadow-modal);
+  z-index: var(--z-toast);
+  transition: var(--transition-base);
+  border: none;
+}
+
+#cart-fab:hover {
+  background: var(--clr-surface-medium);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(43, 27, 25, 0.25);
 }
 
 #cart-count {
   position: absolute;
-  top: -5px;
-  right: -5px;
-  background-color: red;
-  color: white;
-  font-size: 12px;
+  top: -4px;
+  right: -4px;
+  background: var(--clr-primary);
+  color: var(--clr-text-on-gold);
+  font-size: 0.72rem;
+  font-weight: var(--fw-bold);
   width: 22px;
   height: 22px;
-  border-radius: 50%;
+  border-radius: var(--radius-full);
   display: flex;
   align-items: center;
   justify-content: center;
+  box-shadow: 0 2px 6px rgba(194, 139, 78, 0.3);
 }
 
-/* ===== PANEL KERANJANG ===== */
+/* ===== Cart Panel ===== */
 #cart-panel {
   position: fixed;
   bottom: 90px;
-  right: 20px;
-  width: 300px;
-  max-height: 400px;
-  background-color: white;
-  border-radius: 10px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-  padding: 15px;
+  right: 24px;
+  width: 340px;
+  max-height: 460px;
+  background: var(--clr-surface-card);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-modal);
+  padding: var(--space-lg);
   overflow-y: auto;
-  z-index: 999;
+  z-index: var(--z-modal);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
 }
 
 #cart-panel.hidden {
@@ -52,62 +71,154 @@
 }
 
 #cart-panel h3 {
-  margin-top: 0;
-  font-size: 18px;
+  font-family: var(--font-body);
+  font-size: var(--fs-title);
+  font-weight: var(--fw-title);
+  color: var(--clr-ink);
+  margin: 0;
+  padding-bottom: var(--space-sm);
+  border-bottom: 1px solid var(--clr-rule-light);
+}
+
+/* ===== Cart Items ===== */
+#cart-items {
+  flex: 1;
+  overflow-y: auto;
+  min-height: 60px;
+}
+
+#cart-items p {
+  color: var(--clr-text-muted);
+  font-size: var(--fs-small);
+  text-align: center;
+  padding: var(--space-lg) 0;
 }
 
 .cart-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 8px 0;
-  border-bottom: 1px solid #eee;
-  font-size: 14px;
+  padding: var(--space-sm) 0;
+  border-bottom: 1px solid var(--clr-rule-light);
+  font-size: var(--fs-small);
+  gap: var(--space-sm);
+}
+
+.cart-item span:first-child {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cart-item > div {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
 }
 
 .cart-item button {
-  width: 24px;
-  height: 24px;
-  border: 1px solid #ccc;
-  background: white;
-  border-radius: 4px;
+  width: 28px;
+  height: 28px;
+  border: 1.5px solid var(--clr-rule-light);
+  background: var(--clr-surface-warm);
+  color: var(--clr-surface-medium);
+  border-radius: var(--radius-sm);
   cursor: pointer;
+  font-size: 1rem;
+  font-weight: var(--fw-bold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition-fast);
 }
 
-#cart-total {
-  font-weight: bold;
-  margin: 10px 0;
+.cart-item button:hover {
+  background: var(--clr-primary);
+  color: var(--clr-text-on-gold);
+  border-color: var(--clr-primary);
+}
+
+.cart-item > span:last-child {
+  font-weight: var(--fw-title);
+  color: var(--clr-ink);
+  min-width: 70px;
   text-align: right;
+  font-size: var(--fs-small);
 }
 
+/* ===== Total ===== */
+#cart-total {
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-body);
+  color: var(--clr-ink);
+  text-align: right;
+  padding-top: var(--space-sm);
+  border-top: 1px solid var(--clr-rule-light);
+}
+
+/* ===== Payment Select ===== */
 #cart-payment {
-  margin: 10px 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
 }
+
 #cart-payment label {
-  display: block;
-  font-size: 13px;
-  font-weight: 600;
-  color: #5b3a29;
-  margin-bottom: 4px;
+  font-size: var(--fs-label);
+  font-weight: var(--fw-label);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--clr-text-muted);
 }
+
 #cart-payment select {
   width: 100%;
-  padding: 8px 10px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 14px;
-  background: white;
-  color: #333;
+  padding: 10px 14px;
+  border: 1.5px solid var(--clr-rule-light);
+  border-radius: var(--radius-sm);
+  font-size: var(--fs-small);
+  background: var(--clr-surface-warm);
+  color: var(--clr-ink);
   cursor: pointer;
+  transition: var(--transition-base);
+  outline: none;
+  font-family: var(--font-body);
+  appearance: auto;
 }
 
+#cart-payment select:focus {
+  border-color: var(--clr-primary);
+  box-shadow: 0 0 0 3px var(--clr-primary-glow);
+}
+
+/* ===== Confirm Button ===== */
 #cart-confirm {
   width: 100%;
-  padding: 10px;
-  background-color: #5b3a29;
-  color: white;
+  padding: 12px 24px;
+  background: var(--clr-primary);
+  color: var(--clr-text-on-gold);
   border: none;
-  border-radius: 6px;
+  border-radius: var(--radius-md);
   cursor: pointer;
-  font-size: 14px;
+  font-size: var(--fs-body);
+  font-weight: var(--fw-title);
+  font-family: var(--font-body);
+  transition: var(--transition-base);
+}
+
+#cart-confirm:hover {
+  background: var(--clr-primary-rich);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-hover);
+}
+
+@media (max-width: 480px) {
+  #cart-panel {
+    width: calc(100% - 32px);
+    right: 16px;
+    bottom: 80px;
+    max-height: 60vh;
+  }
 }

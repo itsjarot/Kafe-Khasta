@@ -3,102 +3,220 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>QR Code Meja - Khasta</title>
+  <title>QR Code Meja — Kafe Khasta</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+  <link rel="stylesheet" href="tokens.css">
+
   <style>
-    * {
-      box-sizing: border-box;
-      font-family: 'Poppins', Arial, sans-serif;
-    }
     body {
-      margin: 0;
-      padding: 30px;
-      background-color: #f4f1ee;
+      background: var(--clr-surface-warm);
+      padding: var(--space-2xl) var(--space-lg);
       text-align: center;
-    }
-    h1 {
-      color: #5b3a29;
-      margin: 0 0 20px;
+      font-family: var(--font-body);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
-    /* ===== KONTROL JUMLAH MEJA ===== */
+    .qr-header {
+      margin-bottom: var(--space-xl);
+    }
+
+    .qr-header h1 {
+      font-family: var(--font-display);
+      font-size: var(--fs-headline);
+      font-weight: var(--fw-headline);
+      color: var(--clr-surface-dark);
+      letter-spacing: -0.01em;
+      margin-bottom: var(--space-xs);
+    }
+
+    .qr-header p {
+      font-size: var(--fs-small);
+      color: var(--clr-text-muted);
+    }
+
+    /* Controls */
     .controls {
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 12px;
-      margin-bottom: 30px;
+      gap: var(--space-md);
+      margin-bottom: var(--space-2xl);
       flex-wrap: wrap;
-    }
-    .controls label {
-      font-size: 15px;
-      color: #5b3a29;
-      font-weight: 500;
-    }
-    .controls input {
-      width: 70px;
-      padding: 8px 12px;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      font-size: 15px;
-      text-align: center;
-      color: #333;
-    }
-    .controls button {
-      padding: 8px 20px;
-      background-color: #5b3a29;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      font-size: 14px;
-      font-weight: 500;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-    .controls button:hover {
-      background-color: #2b1b19;
+      background: var(--clr-surface-card);
+      padding: var(--space-lg) var(--space-xl);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-card);
     }
 
-    /* ===== QR CARDS ===== */
+    .controls label {
+      font-size: var(--fs-small);
+      color: var(--clr-text-muted);
+      font-weight: var(--fw-label);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .controls input {
+      width: 72px;
+      padding: 10px 12px;
+      border: 1.5px solid var(--clr-rule-light);
+      border-radius: var(--radius-sm);
+      font-size: var(--fs-body);
+      text-align: center;
+      color: var(--clr-ink);
+      background: var(--clr-surface-warm);
+      outline: none;
+      transition: var(--transition-base);
+      font-family: var(--font-body);
+    }
+
+    .controls input:focus {
+      border-color: var(--clr-primary);
+      box-shadow: 0 0 0 3px var(--clr-primary-glow);
+    }
+
+    .controls .btn-generate {
+      padding: 10px 28px;
+      background: var(--clr-primary);
+      color: var(--clr-text-on-gold);
+      border: none;
+      border-radius: var(--radius-md);
+      font-size: var(--fs-small);
+      font-weight: var(--fw-title);
+      cursor: pointer;
+      transition: var(--transition-base);
+      font-family: var(--font-body);
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+    }
+
+    .controls .btn-generate:hover {
+      background: var(--clr-primary-rich);
+      transform: translateY(-1px);
+    }
+
+    /* QR Cards Grid */
     .meja-list {
       display: flex;
       justify-content: center;
-      gap: 30px;
+      gap: var(--space-xl);
       flex-wrap: wrap;
+      max-width: 1100px;
     }
+
     .meja-card {
-      background: white;
-      border-radius: 10px;
-      padding: 24px 24px 20px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      width: 310px;
+      background: var(--clr-surface-card);
+      border-radius: var(--radius-md);
+      padding: var(--space-xl) var(--space-lg) var(--space-lg);
+      box-shadow: var(--shadow-card);
+      width: 300px;
+      transition: var(--transition-base);
     }
+
+    .meja-card:hover {
+      box-shadow: var(--shadow-hover);
+      transform: translateY(-2px);
+    }
+
     .meja-card h2 {
-      margin: 0 0 16px;
-      color: #5b3a29;
+      font-family: var(--font-display);
+      font-size: var(--fs-title);
+      font-weight: var(--fw-headline);
+      color: var(--clr-surface-dark);
+      margin: 0 0 var(--space-md);
       text-align: center;
     }
+
     .qr-container {
       display: flex;
       justify-content: center;
     }
-    .meja-card p {
-      font-size: 11px;
-      color: #888;
+
+    .qr-container img {
+      border-radius: var(--radius-sm);
+    }
+
+    .meja-card .qr-url {
+      font-size: 0.7rem;
+      color: var(--clr-text-muted);
       word-break: break-all;
       text-align: center;
-      margin: 14px 0 0;
+      margin: var(--space-md) 0 0;
+      font-family: var(--font-mono);
+      letter-spacing: 0;
+      text-transform: none;
+    }
+
+    /* Back button */
+    .btn-back-qr {
+      align-self: flex-start;
+      padding: 8px 16px;
+      background: transparent;
+      border: 1.5px solid var(--clr-surface-medium);
+      color: var(--clr-surface-medium);
+      border-radius: var(--radius-sm);
+      font-size: var(--fs-small);
+      font-weight: var(--fw-label);
+      cursor: pointer;
+      transition: var(--transition-base);
+      font-family: var(--font-body);
+      margin-bottom: var(--space-lg);
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-sm);
+    }
+
+    .btn-back-qr:hover {
+      background: var(--clr-surface-dark);
+      color: var(--clr-text-on-dark);
+      border-color: var(--clr-surface-dark);
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: var(--space-lg) var(--space-md);
+      }
+
+      .controls {
+        padding: var(--space-md);
+        width: 100%;
+      }
+
+      .meja-card {
+        width: 100%;
+        max-width: 320px;
+      }
     }
   </style>
 </head>
 <body>
 
-  <h1>QR Code Meja - Khasta</h1>
+  <button class="btn-back-qr" onclick="window.location.href='dashboard.html'">
+    <i class="fa-solid fa-arrow-left"></i> Kembali
+  </button>
+
+  <div class="qr-header">
+    <h1>QR Code Meja</h1>
+    <p>Generate QR code untuk ditempel di setiap meja</p>
+  </div>
 
   <div class="controls">
     <label for="jumlahInput">Jumlah Meja</label>
     <input type="number" id="jumlahInput" min="1" max="20" value="3">
-    <button id="btnGenerate">Generate</button>
+    <button class="btn-generate" id="btnGenerate">
+      <i class="fa-solid fa-qrcode"></i>
+      Generate
+    </button>
   </div>
 
   <div class="meja-list" id="meja-list"></div>
@@ -113,15 +231,11 @@
 
     function generateQR() {
       const jumlah = parseInt(jumlahInput.value) || 1;
-
-      // Batasi 1-20
       const count = Math.min(Math.max(jumlah, 1), 20);
       jumlahInput.value = count;
 
-      // Kosongkan container
       mejaList.innerHTML = '';
 
-      // Buat kartu QR tiap meja
       for (let i = 1; i <= count; i++) {
         const url = `${BASE_URL}/order.html?meja=${i}`;
 
@@ -132,7 +246,7 @@
         card.innerHTML = `
           <h2>Meja ${i}</h2>
           <div class="qr-container" id="${qrId}"></div>
-          <p>${url}</p>
+          <p class="qr-url">${url}</p>
         `;
 
         mejaList.appendChild(card);
@@ -145,15 +259,12 @@
       }
     }
 
-    // Generate saat tombol diklik
     btnGenerate.addEventListener('click', generateQR);
 
-    // Generate juga saat Enter di input
     jumlahInput.addEventListener('keydown', (e) => {
       if (e.key === 'Enter') generateQR();
     });
 
-    // Generate pertama kali
     generateQR();
   </script>
 

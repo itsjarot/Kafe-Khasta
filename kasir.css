@@ -1,150 +1,219 @@
-* {
-  box-sizing: border-box;
-  font-family: 'Poppins', Arial, sans-serif;
-}
+/* ========================================
+   Kafe Khasta — Kasir Dashboard (Kanban)
+   ======================================== */
+
+@import url('tokens.css');
 
 body {
-  margin: 0;
-  padding: 20px;
-  background-color: #f4f1ee;
+  background: var(--clr-surface-warm);
+  padding: var(--space-lg);
+  font-family: var(--font-body);
 }
 
-h1 {
-  margin: 0;
-  color: #5b3a29;
-}
-
-.header-kasir {
+/* ===== Header ===== */
+.kasir-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   max-width: 1200px;
-  margin: 0 auto 10px;
+  margin: 0 auto var(--space-md);
   flex-wrap: wrap;
-  gap: 10px;
+  gap: var(--space-md);
 }
 
-.header-left {
+.kasir-header-left {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: var(--space-md);
+}
+
+.kasir-header-left h1 {
+  font-family: var(--font-display);
+  font-size: var(--fs-headline);
+  font-weight: var(--fw-headline);
+  color: var(--clr-surface-dark);
+  letter-spacing: -0.01em;
+  margin: 0;
 }
 
 .btn-back {
   padding: 8px 16px;
-  background: none;
-  border: 1px solid #5b3a29;
-  color: #5b3a29;
-  border-radius: 8px;
-  font-size: 13px;
-  font-weight: 500;
+  background: transparent;
+  border: 1.5px solid var(--clr-surface-medium);
+  color: var(--clr-surface-medium);
+  border-radius: var(--radius-sm);
+  font-size: var(--fs-small);
+  font-weight: var(--fw-label);
   cursor: pointer;
-  transition: 0.3s;
+  transition: var(--transition-base);
+  font-family: var(--font-body);
 }
+
 .btn-back:hover {
-  background: #5b3a29;
-  color: white;
+  background: var(--clr-surface-dark);
+  color: var(--clr-text-on-dark);
+  border-color: var(--clr-surface-dark);
 }
 
 .btn-export {
-  padding: 10px 20px;
-  background-color: #2b1b19;
-  color: white;
+  padding: 10px 24px;
+  background: var(--clr-surface-dark);
+  color: var(--clr-text-on-dark);
   border: none;
-  border-radius: 8px;
-  font-size: 14px;
-  font-weight: 500;
+  border-radius: var(--radius-md);
+  font-size: var(--fs-small);
+  font-weight: var(--fw-title);
   cursor: pointer;
-  transition: 0.3s;
-}
-.btn-export:hover {
-  background-color: #5b3a29;
-  transform: translateY(-2px);
+  transition: var(--transition-base);
+  font-family: var(--font-body);
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
 }
 
+.btn-export:hover {
+  background: var(--clr-surface-medium);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-hover);
+}
+
+/* ===== Board ===== */
 .board {
   display: flex;
-  gap: 15px;
-  margin-top: 20px;
+  gap: var(--space-lg);
+  max-width: 1200px;
+  margin: var(--space-lg) auto 0;
   flex-wrap: wrap;
 }
 
 .column {
   flex: 1;
   min-width: 280px;
-  background-color: #fff;
-  border-radius: 10px;
-  padding: 15px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  background: var(--clr-surface-card);
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-card);
 }
 
 .column h2 {
-  margin-top: 0;
+  margin: 0 0 var(--space-lg);
   text-align: center;
-  font-size: 18px;
-  color: #5b3a29;
-  border-bottom: 2px solid #5b3a29;
-  padding-bottom: 8px;
+  font-size: var(--fs-title);
+  font-weight: var(--fw-title);
+  color: var(--clr-surface-medium);
+  padding-bottom: var(--space-sm);
+  border-bottom: 2px solid var(--clr-rule-light);
+  letter-spacing: 0.02em;
+}
+
+/* Status-specific column headers */
+#col-baru h2 { border-bottom-color: var(--clr-primary); }
+#col-diproses h2 { border-bottom-color: var(--clr-surface-medium); }
+#col-selesai h2 { border-bottom-color: var(--clr-billiard); }
+
+/* ===== Cards ===== */
+.cards {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
 }
 
 .card {
-  background-color: #f9f5f2;
-  border-radius: 8px;
-  padding: 12px;
-  margin-bottom: 12px;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+  background: var(--clr-surface-warm);
+  border-radius: var(--radius-sm);
+  padding: var(--space-md);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+  transition: var(--transition-base);
+}
+
+.card:hover {
+  box-shadow: var(--shadow-hover);
 }
 
 .card h3 {
-  margin: 0 0 8px;
-  font-size: 16px;
+  font-size: var(--fs-body);
+  font-weight: var(--fw-title);
+  color: var(--clr-ink);
+  margin: 0 0 var(--space-sm);
 }
 
 .card ul {
-  margin: 0 0 8px;
-  padding-left: 18px;
-  font-size: 14px;
+  margin: 0 0 var(--space-sm);
+  padding-left: var(--space-lg);
+  font-size: var(--fs-small);
+  color: var(--clr-text-body);
+  line-height: 1.6;
 }
 
 .card .total {
-  font-weight: bold;
-  margin-bottom: 8px;
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-body);
+  color: var(--clr-primary-rich);
+  margin-bottom: var(--space-sm);
 }
 
 .card .waktu {
-  font-size: 12px;
-  color: #888;
-  margin-bottom: 4px;
+  font-size: var(--fs-label);
+  color: var(--clr-text-muted);
+  margin-bottom: var(--space-xs);
 }
+
 .card .bayar {
   display: inline-block;
-  font-size: 11px;
-  font-weight: 600;
-  color: #5b3a29;
-  background: #ede0d4;
+  font-size: 0.7rem;
+  font-weight: var(--fw-label);
+  color: var(--clr-surface-medium);
+  background: rgba(194, 139, 78, 0.12);
   padding: 2px 10px;
-  border-radius: 10px;
-  margin-bottom: 8px;
+  border-radius: var(--radius-full);
+  margin-bottom: var(--space-sm);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
 }
 
 .card button {
   width: 100%;
-  padding: 8px;
-  background-color: #5b3a29;
-  color: white;
+  padding: 10px;
+  background: var(--clr-surface-dark);
+  color: var(--clr-text-on-dark);
   border: none;
-  border-radius: 6px;
+  border-radius: var(--radius-sm);
   cursor: pointer;
-  font-size: 14px;
+  font-size: var(--fs-small);
+  font-weight: var(--fw-title);
+  transition: var(--transition-base);
+  font-family: var(--font-body);
 }
 
 .card button:hover {
-  background-color: #43291c;
+  background: var(--clr-surface-medium);
+  transform: translateY(-1px);
 }
 
+/* ===== Empty State ===== */
 .empty {
   text-align: center;
-  color: #aaa;
-  font-size: 14px;
-  padding: 10px 0;
+  color: var(--clr-text-muted);
+  font-size: var(--fs-small);
+  padding: var(--space-xl) 0;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 900px) {
+  body {
+    padding: var(--space-md);
+  }
+
+  .board {
+    flex-direction: column;
+  }
+
+  .column {
+    min-width: auto;
+  }
+
+  .kasir-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }

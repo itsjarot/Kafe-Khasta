@@ -3,88 +3,58 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kafe Khasta — Ruang Hangat</title>
 
-  <title>Coffee Shop</title>
+  <!-- Imports -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-  <!-- CSS -->
-  <link rel="stylesheet" href="style.css">
-  <!--CSS navbar-->
+  <!-- Styles -->
+  <link rel="stylesheet" href="tokens.css">
   <link rel="stylesheet" href="navbar.css">
-
-  <!-- Font Awesome dan icon media sosial -->
-  <link rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
-  
-  <!-- Google Font -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
-
-
-
 <body>
+
   <!-- Navbar -->
   <div id="navbar"></div>
 
-
-  <!-- HERO SECTION -->
+  <!-- Hero Section -->
   <section class="hero">
-
-    <!-- CONTENT -->
-    <div class="content">
-
-      <h1>
-        SELAMAT DATANG
-      </h1>
-
+    <div class="hero-content">
+      <p class="eyebrow">Selamat Datang di</p>
+      <h1>Kafe <strong>Khasta</strong></h1>
       <p>
-       Menyajikan kopi dengan racikan khas yang mendalam, menghadirkan kenyamanan di setiap tegukan. 
-       Temukan harmoni rasa kopi pilihan dan suasana santai hanya di Kafe Khasta.
+        Menyajikan kopi dengan racikan khas yang mendalam, menghadirkan kenyamanan di setiap tegukan.
+        Temukan harmoni rasa kopi pilihan dan suasana santai hanya di Kafe Khasta.
       </p>
-
-      <!-- BUTTON -->
-      <div class="start-order">
-        <button class="btn order-btn" onclick="window.location.href='kasir.html'">LIHAT PESANAN</button>
-        <button class="btn order-btn" onclick="window.location.href='qr.html'">QR CODE</button>
+      <div class="hero-actions">
+        <button class="btn btn-primary" onclick="window.location.href='kasir.html'">
+          <i class="fa-solid fa-receipt"></i>
+          Lihat Pesanan
+        </button>
+        <button class="btn btn-secondary" onclick="window.location.href='qr.html'">
+          <i class="fa-solid fa-qrcode"></i>
+          QR Code
+        </button>
       </div>
-        
-
-    </div>
-       <!-- gambar logo khasta -->
-    <div class="coffee-image">
-        <img src="gambar/logo_cafe_khasta-removebg.png" alt="Coffee">
     </div>
 
+    <div class="hero-image">
+      <img src="gambar/logo_cafe_khasta-removebg.png" alt="Kafe Khasta — kopi dan suasana hangat">
+    </div>
   </section>
 
-
-
-  
-  <!-- JAVASCRIPT -->
-  
- <!-- script untuk navbar.js -->
- <script src="navbar.js"></script>
- <!-- script untuk navbar.js -->
-
-
+  <!-- Scripts -->
+  <script src="navbar.js"></script>
   <script>
-    //responsive icon menu
-    function toggleMenu(){
-
-      let nav = document.getElementById("navright");
-
-      nav.classList.toggle("active");
-
+    function toggleMenu() {
+      const nav = document.getElementById('navright');
+      nav.classList.toggle('active');
     }
-
-
-    //tombol untuk pindah halaman ke:
-    function mulaiOrder(){
-      alert("Masuk ke halaman menu order");
-    }
-
-    
-
   </script>
 
-  
+</body>
 </html>

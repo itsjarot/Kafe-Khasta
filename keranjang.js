@@ -57,8 +57,8 @@ productGrid.addEventListener('click', (e) => {
   if (e.target.tagName === 'BUTTON') {
     const menuItem = e.target.closest('.menu-item');
     const nama = menuItem.querySelector('h3').textContent.trim();
-    const hargaText = menuItem.querySelector('p').textContent; // "Rp 22K"
-    const harga = parseInt(hargaText.replace(/[^0-9]/g, '')) * 1000;
+    const hargaText = menuItem.querySelector('p').textContent; // "Rp 22.000"
+    const harga = parseInt(hargaText.replace(/[^0-9]/g, ''));
 
     tambahKeKeranjang(nama, harga);
   }

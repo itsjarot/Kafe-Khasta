@@ -3,656 +3,54 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Coffee Menu</title>
+  <title>Pesan — Kafe Khasta</title>
 
-  
-  <!-- CSS order -->
-  <link rel="stylesheet" href="order.css">
-  <!-- CSS navbar -->
-  <link rel="stylesheet" href="navbar.css">
-  <!-- CSS Keranjang -->
-  <link rel="stylesheet" href="keranjang.css">
-
-
-  <!-- FONT -->
+  <!-- Imports -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-  <!-- Font Awesome dan icon media sosial -->
-  <link rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
-
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Styles -->
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="navbar.css">
+  <link rel="stylesheet" href="order.css">
+  <link rel="stylesheet" href="keranjang.css">
 </head>
 <body>
 
   <!-- Navbar -->
   <div id="navbar"></div>
 
-  <!-- CONTAINER -->
+  <!-- Order Layout -->
+  <div class="order-layout">
 
-  <div class="container">
-
-    <!-- SIDEBAR LIST MENU -->
-
-    <div class="sidebar">
-
-      <h2>MENU</h2>
-
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <h2>Menu</h2>
       <ul class="menu-list">
-
-        <li class="active" onclick="showMenu('coffeeBasse')">
-          Coffee base
-        </li>
-
-        <li onclick="showMenu('nonCoffee')">
-          Non Coffee
-        </li>
-
-        <li onclick="showMenu('tea')">
-          Tea
-        </li>
-
-        <li onclick="showMenu('mainDishes')">
-         Main Dishes
-        </li>
-
-         <li onclick="showMenu('dessert')">
-         Dessert
-        </li>
-
+        <li class="active" onclick="showMenu('coffeeBasse')">Coffee Base</li>
+        <li onclick="showMenu('nonCoffee')">Non Coffee</li>
+        <li onclick="showMenu('tea')">Tea</li>
+        <li onclick="showMenu('mainDishes')">Main Dishes</li>
+        <li onclick="showMenu('dessert')">Dessert</li>
       </ul>
+    </aside>
 
-    </div>
-
-    <!-- CONTENT -->
-
-    <div class="content">
-
+    <!-- Content -->
+    <main class="order-content">
       <div class="content-title">
         <h1 id="menuTitle">Coffee Base</h1>
         <p>Pilih minuman dan makanan favoritmu.</p>
       </div>
 
       <div class="product-grid" id="productGrid">
-
-        <!-- MENU -->
-
-        <section class="menu">
-          <div class="menu-item">
-             <div class="menu-info">
-             <h3>Cold White</h3>
-             <p>Rp 22K</p>
-           </div>
-
-          <button>Pesan</button>
-         </div>
-
-          <div class="menu-item">
-             <div class="menu-info">
-              <h3>Butterscotch Machiato</h3>
-             <p>Rp 22K</p>
-             </div>
-
-             <button>Pesan</button>
-        </div>
-
-         <div class="menu-item">
-         <div class="menu-info">
-            <h3>Salted Caramel Coffe Milk</h3>
-            <p>Rp 20K</p>
-         </div>
-
-        <button>Pesan</button>
-        </div>
-
-        <div class="menu-item">
-        <div class="menu-info">
-            <h3>Kopi Susu Gula Aren</h3>
-            <p>Rp 20K</p>
-        </div>
-
-        <button>Pesan</button>
-        </div>
-
-        <div class="menu-item">
-        <div class="menu-info">
-            <h3>Huzelnut Coffe Latte</h3>
-            <p>Rp 20K</p>
-        </div>
-
-        <button>Pesan</button>
-        </div>
-
-        <div class="menu-item">
-        <div class="menu-info">
-            <h3>Mochacino</h3>
-            <p>Rp 22K</p>
-        </div>
-
-        <button>Pesan</button>
-        </div>
-
-        <div class="menu-item">
-        <div class="menu-info">
-            <h3>Cappucino</h3>
-            <p>Rp 20K</p>
-        </div>
-
-        <button>Pesan</button>
-        </div>
-
-        <div class="menu-item">
-        <div class="menu-info">
-            <h3>Affogato</h3>
-            <p>Rp 20K</p>
-        </div>
-
-        <button>Pesan</button>
-        </div>
-
-        <div class="menu-item">
-        <div class="menu-info">
-            <h3>Kopi Khasta</h3>
-            <p>Rp 18K</p>
-        </div>
-
-        <button>Pesan</button>
-        </div>
-
-        <div class="menu-item">
-        <div class="menu-info">
-            <h3>Vietnam Coffe</h3>
-            <p>Rp 20K</p>
-        </div>
-
-        <button>Pesan</button>
-        </div>
-
-        <div class="menu-item">
-        <div class="menu-info">
-            <h3>Americano</h3>
-            <p>Rp 15K</p>
-        </div>
-
-        <button>Pesan</button>
-        </div>
-     </section>
-
+        <!-- Dynamic JS content -->
       </div>
-
-    </div>
-
+    </main>
   </div>
 
-
-<!-- JAVASCRIPT -->
-
- <!-- script untuk navbar.js -->
- <script src="navbar.js"></script>
- <!-- script untuk navbar.js -->
-
-
-
-  <script>
-    const title = document.getElementById("menuTitle");
-    const productGrid = document.getElementById("productGrid");
-
-    //responsive icon menu
-    function toggleMenu(){
-
-      let nav = document.getElementById("navright");
-
-      nav.classList.toggle("active");
-
-    }
-
-
-    function showMenu(type){
-
-      // ACTIVE MENU
-
-      let items = document.querySelectorAll(".menu-list li");
-
-      items.forEach(item=>{
-        item.classList.remove("active");
-      });
-
-      event.target.classList.add("active");
-
-      // COFFEE BASSEE
-
-      if(type === "coffeeBasse"){
-
-        title.innerHTML = "Coffee basse";
-
-        productGrid.innerHTML = `
-
-         <section class="menu">
-          <div class="menu-item">
-             <div class="menu-info">
-             <h3>Cold White</h3>
-             <p>Rp 22K</p>
-           </div>
-
-          <button>Pesan</button>
-         </div>
-
-          <div class="menu-item">
-             <div class="menu-info">
-              <h3>Butterscotch Machiato</h3>
-             <p>Rp 22K</p>
-             </div>
-
-             <button>Pesan</button>
-        </div>
-
-         <div class="menu-item">
-         <div class="menu-info">
-            <h3>Salted Caramel Coffe Milk</h3>
-            <p>Rp 20K</p>
-         </div>
-
-        <button>Pesan</button>
-        </div>
-
-        <div class="menu-item">
-        <div class="menu-info">
-            <h3>Kopi Susu Gula Aren</h3>
-            <p>Rp 20K</p>
-        </div>
-
-        <button>Pesan</button>
-        </div>
-
-        <div class="menu-item">
-        <div class="menu-info">
-            <h3>Huzelnut Coffe Latte</h3>
-            <p>Rp 20K</p>
-        </div>
-
-        <button>Pesan</button>
-        </div>
-
-        <div class="menu-item">
-        <div class="menu-info">
-            <h3>Mochacino</h3>
-            <p>Rp 22K</p>
-        </div>
-
-        <button>Pesan</button>
-        </div>
-
-        <div class="menu-item">
-        <div class="menu-info">
-            <h3>Cappucino</h3>
-            <p>Rp 20K</p>
-        </div>
-
-        <button>Pesan</button>
-        </div>
-
-        <div class="menu-item">
-        <div class="menu-info">
-            <h3>Affogato</h3>
-            <p>Rp 20K</p>
-        </div>
-
-        <button>Pesan</button>
-        </div>
-
-        <div class="menu-item">
-        <div class="menu-info">
-            <h3>Kopi Khasta</h3>
-            <p>Rp 18K</p>
-        </div>
-
-        <button>Pesan</button>
-        </div>
-
-        <div class="menu-item">
-        <div class="menu-info">
-            <h3>Vietnam Coffe</h3>
-            <p>Rp 20K</p>
-        </div>
-
-        <button>Pesan</button>
-        </div>
-
-        <div class="menu-item">
-        <div class="menu-info">
-            <h3>Americano</h3>
-            <p>Rp 15K</p>
-        </div>
-
-        <button>Pesan</button>
-        </div>
-     </section>
-        `;
-
-      }
-
-      // NON COFFEE
-
-      else if(type === "nonCoffee"){
-
-        title.innerHTML = "Non Coffee";
-
-        productGrid.innerHTML = `
-
-         <section class="menu">
-          <div class="menu-item">
-             <div class="menu-info">
-             <h3>Red Velvet</h3>
-             <p>Rp 22K</p>
-           </div>
-
-          <button>Pesan</button>
-         </div>
-
-          <div class="menu-item">
-             <div class="menu-info">
-              <h3>Matcha</h3>
-             <p>Rp 20K</p>
-             </div>
-
-             <button>Pesan</button>
-        </div>
-
-         <div class="menu-item">
-         <div class="menu-info">
-            <h3>Rum Regal Milk</h3>
-            <p>Rp 20K</p>
-         </div>
-
-        <button>Pesan</button>
-        </div>
-
-        <div class="menu-item">
-        <div class="menu-info">
-            <h3>Chocolate</h3>
-            <p>Rp 20K</p>
-        </div>
-
-        <button>Pesan</button>
-        </div>
-
-        <div class="menu-item">
-        <div class="menu-info">
-            <h3>Milo</h3>
-            <p>Rp 18K</p>
-        </div>
-
-        <button>Pesan</button>
-        </div>
-
-        <div class="menu-item">
-        <div class="menu-info">
-            <h3>Milk Shake Vanila</h3>
-            <p>Rp 20K</p>
-        </div>
-
-        <button>Pesan</button>
-        </div>
-
-        <div class="menu-item">
-        <div class="menu-info">
-            <h3>Milk Shake Chocolate</h3>
-            <p>Rp 20K</p>
-        </div>
-
-        <button>Pesan</button>
-        </div>
-
-        <div class="menu-item">
-        <div class="menu-info">
-            <h3>Milk Shake Strawberry</h3>
-            <p>Rp 20K</p>
-        </div>
-
-        <button>Pesan</button>
-        </div>
-
-        <div class="menu-item">
-        <div class="menu-info">
-            <h3>Biscoff Latte</h3>
-            <p>Rp 20K</p>
-        </div>
-
-        <button>Pesan</button>
-        </div>
-
-        <div class="menu-item">
-        <div class="menu-info">
-            <h3>Milk Oreo</h3>
-            <p>Rp 20K</p>
-        </div>
-
-        <button>Pesan</button>
-        </div>
-
-        <div class="menu-item">
-        <div class="menu-info">
-            <h3>Milk Biscoff</h3>
-            <p>Rp 25K</p>
-        </div>
-
-        <button>Pesan</button>
-        </div>
-     </section>
-
-        `;
-
-      }
-
-      // TEA
-
-      else if(type === "tea"){
-
-        title.innerHTML = "Tea";
-
-        productGrid.innerHTML = `
-
-          <section class="menu">
-          <div class="menu-item">
-             <div class="menu-info">
-             <h3>Lychee Tea</h3>
-             <p>Rp 18K</p>
-           </div>
-
-          <button>Pesan</button>
-         </div>
-
-          <div class="menu-item">
-             <div class="menu-info">
-              <h3>Thai Tea</h3>
-             <p>Rp 18K</p>
-             </div>
-
-             <button>Pesan</button>
-        </div>
-
-         <div class="menu-item">
-         <div class="menu-info">
-            <h3>Green Tea</h3>
-            <p>Rp 18K</p>
-         </div>
-
-        <button>Pesan</button>
-        </div>
-
-        <div class="menu-item">
-        <div class="menu-info">
-            <h3>Lemon Tea</h3>
-            <p>Rp 15K</p>
-        </div>
-
-        <button>Pesan</button>
-        </div>
-
-        <div class="menu-item">
-        <div class="menu-info">
-            <h3>Milk Tea</h3>
-            <p>Rp 15K</p>
-        </div>
-
-        <button>Pesan</button>
-        </div>
-
-        <div class="menu-item">
-        <div class="menu-info">
-            <h3>Tea</h3>
-            <p>Rp 13K</p>
-        </div>
-
-        <button>Pesan</button>
-        </div>
-     </section>
-        `;
-
-      }
-
-      // Makanan
-
-      else if(type === "mainDishes"){
-
-        title.innerHTML = "Main Dishes";
-
-        productGrid.innerHTML = `
-
-          <section class="menu">
-          <div class="menu-item">
-             <div class="menu-info">
-             <h3>Chiken Katsu</h3>
-             <p>Rp 25K</p>
-           </div>
-
-          <button>Pesan</button>
-         </div>
-
-          <div class="menu-item">
-             <div class="menu-info">
-              <h3>Nasi Goreng Khasta</h3>
-             <p>Rp 25K</p>
-             </div>
-
-             <button>Pesan</button>
-        </div>
-
-         <div class="menu-item">
-         <div class="menu-info">
-            <h3>Indomie Goreng</h3>
-            <p>Rp 15K</p>
-         </div>
-
-        <button>Pesan</button>
-        </div>
-
-        <div class="menu-item">
-        <div class="menu-info">
-            <h3>Indomie Soto</h3>
-            <p>Rp 15K</p>
-        </div>
-
-        <button>Pesan</button>
-        </div>
-
-        <div class="menu-item">
-        <div class="menu-info">
-            <h3>Salted Egg</h3>
-            <p>Rp 25K</p>
-        </div>
-
-        <button>Pesan</button>
-        </div>
-
-        <div class="menu-item">
-        <div class="menu-info">
-            <h3>Mie Khasta</h3>
-            <p>Rp 15K</p>
-        </div>
-
-        <button>Pesan</button>
-        </div>
-
-        <div class="menu-item">
-        <div class="menu-info">
-            <h3>Nasi Goreng Merah</h3>
-            <p>Rp 25K</p>
-        </div>
-
-        <button>Pesan</button>
-        </div>
-     </section>
-
-
-        `;
-
-      }
-
-      else if(type === "dessert"){
-
-        title.innerHTML = "Dessert";
-
-        productGrid.innerHTML = `
-
-         <section class="menu">
-          <div class="menu-item">
-             <div class="menu-info">
-             <h3>Pisang Nugget</h3>
-             <p>Rp 20K</p>
-           </div>
-
-          <button>Pesan</button>
-         </div>
-
-          <div class="menu-item">
-             <div class="menu-info">
-              <h3>Roti Bakar Coklat Keju</h3>
-             <p>Rp 18K</p>
-             </div>
-
-             <button>Pesan</button>
-        </div>
-
-         <div class="menu-item">
-         <div class="menu-info">
-            <h3>Roti Bakar Coklat</h3>
-            <p>Rp 16K</p>
-         </div>
-
-        <button>Pesan</button>
-        </div>
-
-        <div class="menu-item">
-        <div class="menu-info">
-            <h3>Roti Bakar Keju</h3>
-            <p>Rp 16K</p>
-        </div>
-
-        <button>Pesan</button>
-        </div>
-
-        <div class="menu-item">
-        <div class="menu-info">
-            <h3>Kentang Goreng</h3>
-            <p>Rp 18K</p>
-        </div>
-
-        <button>Pesan</button>
-        </div>
-
-        `;
-
-      }
-
-
-    }
-
-  </script>
-  <script src="keranjang.js"></script>
-
-  <!-- ===== REVIEW MODAL ===== -->
+  <!-- ===== Review Modal ===== -->
   <div class="overlay" id="reviewOverlay">
     <div class="overlay-card">
       <div class="review-meja" id="reviewMeja">Meja 1</div>
@@ -673,10 +71,10 @@
     </div>
   </div>
 
-  <!-- ===== SUCCESS SCREEN ===== -->
+  <!-- ===== Success Screen ===== -->
   <div class="overlay" id="successOverlay">
     <div class="overlay-card success-card">
-      <div class="checkmark">&#10003;</div>
+      <div class="checkmark">✓</div>
       <div class="success-title">Pesanan Berhasil!</div>
       <div class="success-desc">Pesananmu sedang diproses oleh barista.</div>
       <div class="success-desc">Silakan tunggu di meja.</div>
@@ -685,69 +83,148 @@
     </div>
   </div>
 
+  <!-- Scripts -->
+  <script src="navbar.js"></script>
   <script>
-    // ===== MODIFIKASI NAVBAR UNTUK CUSTOMER =====
-    // Tunggu navbar selesai di-load, lalu ganti link dengan info meja
-    const tungguNavbar = setInterval(() => {
-      const navRight = document.getElementById('navright');
-      if (navRight && navRight.children.length > 0) {
-        clearInterval(tungguNavbar);
+    const title = document.getElementById('menuTitle');
+    const productGrid = document.getElementById('productGrid');
 
-        // Hapus HOME & LIHAT PESANAN
-        const links = navRight.querySelectorAll('a');
-        links.forEach((a) => a.remove());
+    function toggleMenu() {
+      const nav = document.getElementById('navright');
+      nav.classList.toggle('active');
+    }
 
-        // Tambah info nomor meja
-        const infoMeja = document.createElement('span');
-        infoMeja.className = 'navbar-info-meja';
-        infoMeja.textContent = `Meja ${nomorMeja}`;
-        navRight.prepend(infoMeja);
+    // ===== MENU DATA =====
+    const menuData = {
+      coffeeBasse: {
+        title: 'Coffee Base',
+        items: [
+          { nama: 'Cold White', harga: 22000 },
+          { nama: 'Butterscotch Machiato', harga: 22000 },
+          { nama: 'Salted Caramel Coffee Milk', harga: 20000 },
+          { nama: 'Kopi Susu Gula Aren', harga: 20000 },
+          { nama: 'Hazelnut Coffee Latte', harga: 20000 },
+          { nama: 'Mochacino', harga: 22000 },
+          { nama: 'Cappuccino', harga: 20000 },
+          { nama: 'Affogato', harga: 20000 },
+          { nama: 'Kopi Khasta', harga: 18000 },
+          { nama: 'Vietnam Coffee', harga: 20000 },
+          { nama: 'Americano', harga: 15000 }
+        ]
+      },
+      nonCoffee: {
+        title: 'Non Coffee',
+        items: [
+          { nama: 'Red Velvet', harga: 22000 },
+          { nama: 'Matcha', harga: 20000 },
+          { nama: 'Rum Regal Milk', harga: 20000 },
+          { nama: 'Chocolate', harga: 20000 },
+          { nama: 'Milo', harga: 18000 },
+          { nama: 'Milk Shake Vanila', harga: 20000 },
+          { nama: 'Milk Shake Chocolate', harga: 20000 },
+          { nama: 'Milk Shake Strawberry', harga: 20000 },
+          { nama: 'Biscoff Latte', harga: 20000 },
+          { nama: 'Milk Oreo', harga: 20000 },
+          { nama: 'Milk Biscoff', harga: 25000 }
+        ]
+      },
+      tea: {
+        title: 'Tea',
+        items: [
+          { nama: 'Lychee Tea', harga: 18000 },
+          { nama: 'Thai Tea', harga: 18000 },
+          { nama: 'Green Tea', harga: 18000 },
+          { nama: 'Lemon Tea', harga: 15000 },
+          { nama: 'Milk Tea', harga: 15000 },
+          { nama: 'Tea', harga: 13000 }
+        ]
+      },
+      mainDishes: {
+        title: 'Main Dishes',
+        items: [
+          { nama: 'Chicken Katsu', harga: 25000 },
+          { nama: 'Nasi Goreng Khasta', harga: 25000 },
+          { nama: 'Indomie Goreng', harga: 15000 },
+          { nama: 'Indomie Soto', harga: 15000 },
+          { nama: 'Salted Egg', harga: 25000 },
+          { nama: 'Mie Khasta', harga: 15000 },
+          { nama: 'Nasi Goreng Merah', harga: 25000 }
+        ]
+      },
+      dessert: {
+        title: 'Dessert',
+        items: [
+          { nama: 'Pisang Nugget', harga: 20000 },
+          { nama: 'Roti Bakar Coklat Keju', harga: 18000 },
+          { nama: 'Roti Bakar Coklat', harga: 16000 },
+          { nama: 'Roti Bakar Keju', harga: 16000 },
+          { nama: 'Kentang Goreng', harga: 18000 }
+        ]
       }
-    }, 50);
+    };
 
-    // ===== REVIEW & SUCCESS FLOW =====
+    function renderMenu(kategori) {
+      const data = menuData[kategori];
+      if (!data) return;
+
+      title.textContent = data.title;
+
+      productGrid.innerHTML = data.items.map(item =>
+        `<div class="menu-item">
+          <div class="menu-info">
+            <h3>${item.nama}</h3>
+            <p>Rp ${item.harga.toLocaleString('id-ID')}</p>
+          </div>
+          <button>Pesan</button>
+        </div>`
+      ).join('');
+    }
+
+    function showMenu(type) {
+      // Update active state
+      const items = document.querySelectorAll('.menu-list li');
+      items.forEach(item => item.classList.remove('active'));
+      event.target.classList.add('active');
+
+      renderMenu(type);
+    }
+
+    // Initial render
+    renderMenu('coffeeBasse');
+  </script>
+  <script src="keranjang.js"></script>
+
+  <!-- ===== CUSTOM REVIEW & SUCCESS FLOW ===== -->
+  <script>
     const reviewOverlay = document.getElementById('reviewOverlay');
     const successOverlay = document.getElementById('successOverlay');
 
-    // Ambil data dari keranjang & tampilkan di modal review
     function tampilkanReview() {
       if (keranjang.length === 0) {
         alert('Keranjang masih kosong!');
         return;
       }
 
-      // Isi info meja
       document.getElementById('reviewMeja').textContent = `Meja ${nomorMeja}`;
 
-      // Isi daftar item
-      const itemsHtml = keranjang
-        .map(
-          (item) =>
-            `<li>
-              <span>${item.nama} x${item.jumlah}</span>
-              <span>Rp ${(item.harga * item.jumlah).toLocaleString('id-ID')}</span>
-            </li>`
-        )
-        .join('');
+      const itemsHtml = keranjang.map(item =>
+        `<li>
+          <span>${item.nama} x${item.jumlah}</span>
+          <span>Rp ${(item.harga * item.jumlah).toLocaleString('id-ID')}</span>
+        </li>`
+      ).join('');
       document.getElementById('reviewItems').innerHTML = itemsHtml;
 
-      // Isi metode bayar
       const bayarEl = document.getElementById('payment-select');
       const bayar = bayarEl ? bayarEl.value : 'Tunai';
       document.getElementById('reviewBayar').textContent = bayar;
 
-      // Isi total
-      const total = keranjang.reduce(
-        (sum, item) => sum + item.harga * item.jumlah,
-        0
-      );
+      const total = keranjang.reduce((sum, item) => sum + item.harga * item.jumlah, 0);
       document.getElementById('reviewTotal').textContent = `Rp ${total.toLocaleString('id-ID')}`;
 
-      // Tampilkan modal
       reviewOverlay.classList.add('show');
     }
 
-    // Kirim pesanan (dipanggil dari tombol Pesan Sekarang)
     async function kirimPesananDariReview() {
       const btn = document.getElementById('reviewPesan');
       btn.disabled = true;
@@ -763,19 +240,17 @@
           body: JSON.stringify({
             nomor_meja: nomorMeja,
             items: keranjang,
-            metode_pembayaran: bayar,
-          }),
+            metode_pembayaran: bayar
+          })
         });
 
         if (!response.ok) throw new Error('Gagal mengirim pesanan');
 
-        // Tutup review, kosongkan keranjang
         reviewOverlay.classList.remove('show');
         keranjang = [];
         renderKeranjang();
         document.getElementById('cart-panel').classList.add('hidden');
 
-        // Tampilkan success screen
         document.getElementById('successMeja').textContent = `Meja ${nomorMeja}`;
         successOverlay.classList.add('show');
       } catch (err) {
@@ -785,29 +260,41 @@
       }
     }
 
-    // Event listener saat halaman siap
+    // ===== MODIFIKASI NAVBAR UNTUK CUSTOMER =====
+    // Tampilkan nomor meja, sembunyikan navigasi biasa
+    const tungguNavbar = setInterval(() => {
+      const navRight = document.getElementById('navright');
+      if (navRight && navRight.children.length > 0) {
+        clearInterval(tungguNavbar);
+        const links = navRight.querySelectorAll('a');
+        links.forEach((a) => a.remove());
+        const infoMeja = document.createElement('span');
+        infoMeja.className = 'navbar-info-meja';
+        infoMeja.textContent = `Meja ${nomorMeja}`;
+        navRight.prepend(infoMeja);
+      }
+    }, 50);
+
     document.addEventListener('DOMContentLoaded', () => {
-      // Ganti handler tombol konfirmasi di keranjang
+      // Override cart confirm to use review modal
       const waitBtn = setInterval(() => {
         const confirmBtn = document.getElementById('cart-confirm');
         if (confirmBtn) {
           clearInterval(waitBtn);
-
-          // Clone untuk hapus event listener bawaan keranjang.js
           const newBtn = confirmBtn.cloneNode(true);
           confirmBtn.parentNode.replaceChild(newBtn, confirmBtn);
+
+          // Remove old listener (from keranjang.js) and add new one
           newBtn.addEventListener('click', tampilkanReview);
         }
       }, 50);
 
-      // Tombol di review modal
       document.getElementById('reviewBatal').addEventListener('click', () => {
         reviewOverlay.classList.remove('show');
       });
 
       document.getElementById('reviewPesan').addEventListener('click', kirimPesananDariReview);
 
-      // Tombol pesan lagi di success screen
       document.getElementById('successLagi').addEventListener('click', () => {
         successOverlay.classList.remove('show');
       });
