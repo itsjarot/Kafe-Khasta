@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login Kasir - Kafe Khasta</title>
+
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      rel="stylesheet"
+    />
+
+    <style>
+      /* Mengimpor font Poppins */
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+
+      body {
+        background: #ffffff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        overflow: hidden;
+      }
+
+      /* Container Box Login */
+      .login-container {
+        background: #2b1b19; /* Menyesuaikan warna navbar */
+        padding: 50px 40px;
+        border-radius: 20px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        width: 100%;
+        max-width: 420px;
+        text-align: center;
+        color: white;
+        position: relative;
+        z-index: 2;
+      }
+
+      .login-container h1 {
+        color: #c28b4e; /* Menyesuaikan warna teks utama */
+        font-size: 32px;
+        margin-bottom: 10px;
+        letter-spacing: 2px;
+        font-weight: 600;
+      }
+
+      .login-container p {
+        color: #ddd;
+        margin-bottom: 35px;
+        font-size: 14px;
+      }
+
+      /* Input Form */
+      .input-group {
+        margin-bottom: 20px;
+        text-align: left;
+      }
+
+      .input-group label {
+        display: block;
+        margin-bottom: 8px;
+        font-size: 14px;
+        color: #ddd;
+      }
+
+      .input-box {
+        position: relative;
+      }
+
+      .input-box i {
+        position: absolute;
+        left: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #c28b4e;
+      }
+
+      .input-group input {
+        width: 100%;
+        padding: 14px 15px 14px 45px;
+        border-radius: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: rgba(255, 255, 255, 0.05);
+        color: white;
+        font-size: 15px;
+        outline: none;
+        transition: 0.3s;
+      }
+
+      .input-group input:focus {
+        border-color: #c28b4e;
+        background: rgba(255, 255, 255, 0.1);
+      }
+
+      /* Tombol Login (Menyesuaikan dengan class .btn di style.css) */
+      .login-btn {
+        width: 100%;
+        height: 55px;
+        margin-top: 15px;
+        padding: 14px 28px;
+        border-radius: 10px;
+        border: none;
+        background: #c28b4e;
+        color: white;
+        font-size: 18px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: 0.3s;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .login-btn:hover {
+        background: #d4a373;
+        transform: translateY(-3px);
+      }
+
+      /* Ornamen Latar Belakang */
+      .bg-shape {
+        position: absolute;
+        width: 300px;
+        height: 300px;
+        background: #c28b4e;
+        border-radius: 50%;
+        opacity: 0.1;
+        z-index: 1;
+      }
+      .shape1 {
+        top: -100px;
+        right: -100px;
+      }
+      .shape2 {
+        bottom: -100px;
+        left: -100px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="bg-shape shape1"></div>
+    <div class="bg-shape shape2"></div>
+
+    <div class="login-container">
+      <h1>KASIR KHASTA</h1>
+      <p>Silakan masuk ke akun Anda</p>
+
+      <form onsubmit="masukDashboard(event)">
+        <div class="input-group">
+          <label for="username">Akun Kasir</label>
+          <div class="input-box">
+            <i class="fa-solid fa-user"></i>
+            <input
+              type="text"
+              id="username"
+              placeholder="Masukkan ID atau Username"
+              required
+            />
+          </div>
+        </div>
+
+        <div class="input-group">
+          <label for="password">Kata Sandi</label>
+          <div class="input-box">
+            <i class="fa-solid fa-lock"></i>
+            <input
+              type="password"
+              id="password"
+              placeholder="Masukkan kata sandi"
+              required
+            />
+          </div>
+        </div>
+
+        <button type="submit" class="login-btn">
+          LOGIN <i class="fa-solid fa-arrow-right-to-bracket"></i>
+        </button>
+      </form>
+    </div>
+
+    <script>
+      function masukDashboard(event) {
+        // Mencegah halaman refresh otomatis saat form disubmit
+        event.preventDefault();
+
+        // Ambil nilai input dari form
+        let user = document.getElementById("username").value;
+        let pass = document.getElementById("password").value;
+
+        // ==========================================
+        // SIMULASI DATABASE AKUN
+        // ==========================================
+        const dbUsername = "kasir1";
+        const dbPassword = "khasta123";
+
+        // Validasi: Cek apakah input cocok dengan database
+        if (user === dbUsername && pass === dbPassword) {
+          // Jika Benar
+          window.location.href = "index.html";
+        } else {
+          // Jika Salah
+          alert("Login Gagal! Akun atau Kata Sandi salah. Silakan coba lagi.");
+
+          // Mengosongkan form password agar user bisa langsung mengetik ulang
+          document.getElementById("password").value = "";
+        }
+      }
+    </script>
+  </body>
+</html>
