@@ -651,5 +651,167 @@
 
   </script>
   <script src="keranjang.js"></script>
+
+  <!-- ===== REVIEW MODAL ===== -->
+  <div class="overlay" id="reviewOverlay">
+    <div class="overlay-card">
+      <div class="review-meja" id="reviewMeja">Meja 1</div>
+      <h2 class="review-title">Konfirmasi Pesanan</h2>
+      <ul class="review-items" id="reviewItems"></ul>
+      <div class="review-bayar">
+        <span>Metode Bayar</span>
+        <span id="reviewBayar">Tunai</span>
+      </div>
+      <div class="review-total">
+        <span>Total</span>
+        <span id="reviewTotal">Rp 0</span>
+      </div>
+      <div class="review-actions">
+        <button class="btn-batal" id="reviewBatal">Kembali</button>
+        <button class="btn-pesan" id="reviewPesan">Pesan Sekarang</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== SUCCESS SCREEN ===== -->
+  <div class="overlay" id="successOverlay">
+    <div class="overlay-card success-card">
+      <div class="checkmark">&#10003;</div>
+      <div class="success-title">Pesanan Berhasil!</div>
+      <div class="success-desc">Pesananmu sedang diproses oleh barista.</div>
+      <div class="success-desc">Silakan tunggu di meja.</div>
+      <div class="success-meja" id="successMeja">Meja 1</div>
+      <button class="btn-pesan-lagi" id="successLagi">Pesan Lagi</button>
+    </div>
+  </div>
+
+  <script>
+    // ===== MODIFIKASI NAVBAR UNTUK CUSTOMER =====
+    // Tunggu navbar selesai di-load, lalu ganti link dengan info meja
+    const tungguNavbar = setInterval(() => {
+      const navRight = document.getElementById('navright');
+      if (navRight && navRight.children.length > 0) {
+        clearInterval(tungguNavbar);
+
+        // Hapus HOME & LIHAT PESANAN
+        const links = navRight.querySelectorAll('a');
+        links.forEach((a) => a.remove());
+
+        // Tambah info nomor meja
+        const infoMeja = document.createElement('span');
+        infoMeja.className = 'navbar-info-meja';
+        infoMeja.textContent = `Meja ${nomorMeja}`;
+        navRight.prepend(infoMeja);
+      }
+    }, 50);
+
+    // ===== REVIEW & SUCCESS FLOW =====
+    const reviewOverlay = document.getElementById('reviewOverlay');
+    const successOverlay = document.getElementById('successOverlay');
+
+    // Ambil data dari keranjang & tampilkan di modal review
+    function tampilkanReview() {
+      if (keranjang.length === 0) {
+        alert('Keranjang masih kosong!');
+        return;
+      }
+
+      // Isi info meja
+      document.getElementById('reviewMeja').textContent = `Meja ${nomorMeja}`;
+
+      // Isi daftar item
+      const itemsHtml = keranjang
+        .map(
+          (item) =>
+            `<li>
+              <span>${item.nama} x${item.jumlah}</span>
+              <span>Rp ${(item.harga * item.jumlah).toLocaleString('id-ID')}</span>
+            </li>`
+        )
+        .join('');
+      document.getElementById('reviewItems').innerHTML = itemsHtml;
+
+      // Isi metode bayar
+      const bayarEl = document.getElementById('payment-select');
+      const bayar = bayarEl ? bayarEl.value : 'Tunai';
+      document.getElementById('reviewBayar').textContent = bayar;
+
+      // Isi total
+      const total = keranjang.reduce(
+        (sum, item) => sum + item.harga * item.jumlah,
+        0
+      );
+      document.getElementById('reviewTotal').textContent = `Rp ${total.toLocaleString('id-ID')}`;
+
+      // Tampilkan modal
+      reviewOverlay.classList.add('show');
+    }
+
+    // Kirim pesanan (dipanggil dari tombol Pesan Sekarang)
+    async function kirimPesananDariReview() {
+      const btn = document.getElementById('reviewPesan');
+      btn.disabled = true;
+      btn.textContent = 'Mengirim...';
+
+      try {
+        const bayarEl = document.getElementById('payment-select');
+        const bayar = bayarEl ? bayarEl.value : 'Tunai';
+
+        const response = await fetch(`${API_URL}/pesanan`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            nomor_meja: nomorMeja,
+            items: keranjang,
+            metode_pembayaran: bayar,
+          }),
+        });
+
+        if (!response.ok) throw new Error('Gagal mengirim pesanan');
+
+        // Tutup review, kosongkan keranjang
+        reviewOverlay.classList.remove('show');
+        keranjang = [];
+        renderKeranjang();
+        document.getElementById('cart-panel').classList.add('hidden');
+
+        // Tampilkan success screen
+        document.getElementById('successMeja').textContent = `Meja ${nomorMeja}`;
+        successOverlay.classList.add('show');
+      } catch (err) {
+        alert('Terjadi kesalahan: ' + err.message);
+        btn.disabled = false;
+        btn.textContent = 'Pesan Sekarang';
+      }
+    }
+
+    // Event listener saat halaman siap
+    document.addEventListener('DOMContentLoaded', () => {
+      // Ganti handler tombol konfirmasi di keranjang
+      const waitBtn = setInterval(() => {
+        const confirmBtn = document.getElementById('cart-confirm');
+        if (confirmBtn) {
+          clearInterval(waitBtn);
+
+          // Clone untuk hapus event listener bawaan keranjang.js
+          const newBtn = confirmBtn.cloneNode(true);
+          confirmBtn.parentNode.replaceChild(newBtn, confirmBtn);
+          newBtn.addEventListener('click', tampilkanReview);
+        }
+      }, 50);
+
+      // Tombol di review modal
+      document.getElementById('reviewBatal').addEventListener('click', () => {
+        reviewOverlay.classList.remove('show');
+      });
+
+      document.getElementById('reviewPesan').addEventListener('click', kirimPesananDariReview);
+
+      // Tombol pesan lagi di success screen
+      document.getElementById('successLagi').addEventListener('click', () => {
+        successOverlay.classList.remove('show');
+      });
+    });
+  </script>
 </body>
 </html>
